@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     :consumer_key => '1eIfupUo52SHWo6TjlSNQ',
     :consumer_secret => 'NeSoo58Y7q1IslPtAR2s1GbdWADfiC49twK8joOTJzc'
   )
-  request_token = client.request_token(:oauth_callback => 'http://localhost:3000/tw_callback')
+  request_token = client.request_token(:oauth_callback => 'http://tvtalk.heroku.com/tw_callback')
   session[:token] = request_token.token
   session[:secret] = request_token.secret
   session[:mobile] = params[:mobile]
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     @user.save
   end
   def get_tw_credentials
-        @user = User.find(params[:mobileid])
+      @user = User.find(params[:mobileid])
 
       if @user.nil?
         render :json => nil
