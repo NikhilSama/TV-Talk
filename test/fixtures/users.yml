@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mobileid: MyString
+  tw_token: MyString
+  tw_token_secrec: MyString
+
+two:
+  mobileid: MyString
+  tw_token: MyString
+  tw_token_secrec: MyString

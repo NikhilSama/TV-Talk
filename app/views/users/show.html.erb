@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mobileid:</b>
+  <%= @user.mobileid %>
+</p>
+
+<p>
+  <b>Tw token:</b>
+  <%= @user.tw_token %>
+</p>
+
+<p>
+  <b>Tw token secrec:</b>
+  <%= @user.tw_token_secrec %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
