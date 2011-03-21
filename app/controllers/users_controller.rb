@@ -137,6 +137,7 @@ class UsersController < ApplicationController
       @return_val["status"] = 'success'
     else
       @return_val["status"] = 'error'
+      User.delete_all(:mobileid => params[:mobileid], :token => params[:token], :secret => params[:secret])
     end
     respond_to do |format|
       format.json { render_json @return_val.to_json }
