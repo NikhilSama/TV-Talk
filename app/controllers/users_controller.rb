@@ -133,10 +133,10 @@ class UsersController < ApplicationController
       :secret => params[:secret])
    
     @resp = @client.update(params[:update])
-    if @resp[:error]
-      @error = "Error!"
-    else
+    if @resp.error.empty?
       @error = "Success!"
+    else
+      @error = "Error!"
     end
   end
 end
