@@ -109,8 +109,19 @@ class UsersController < ApplicationController
         render :json => nil
       else
         respond_to do |format|
-          format.json  { render :json => @user }
+          format.json  { render_json @user.to_json }
         end
       end
+  end
+  def render_json(json)
+    callback = params[:callback]
+    response = begin
+      if callback
+        "#{callback}(#{json});"
+      else
+        json
+      end
+    end
+    render({:content_type => :js, :text => response})
   end
 end
