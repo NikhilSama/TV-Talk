@@ -131,12 +131,15 @@ class UsersController < ApplicationController
       :consumer_secret => 'NeSoo58Y7q1IslPtAR2s1GbdWADfiC49twK8joOTJzc',
       :token => params[:token],
       :secret => params[:secret])
-   
+    @return_val = Hash.new
     @resp = @client.update(params[:update])
-    if @resp[:error].empty?
-      @error = "Success!"
+    if @resp['error'].empty?
+      @return_val["status"] = 'success'
     else
-      @error = "Error!"
+      @return_val["status"] = 'error'
+    end
+    respond_to do |format|
+      format.json { render_json @return_val.to_json }
     end
   end
 end
