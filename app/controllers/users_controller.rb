@@ -94,11 +94,16 @@ class UsersController < ApplicationController
       session[:secret],
       :oauth_verifier => params[:oauth_verifier]
     )
-    @user = User.new(:mobileid=>session[:mobile], :tw_token=>@access_token.token, :tw_token_secrec=>@access_token.secret)
-    @user.save
+    if client.authorized?
+      @user = User.new(:mobileid=>session[:mobile], :tw_token=>@access_token.token, :tw_token_secrec=>@access_token.secret)
+      @user.save
+    else
+      
+    end
+  
   end
   def get_tw_credentials
-      @user = User.find(params[:mobileid])
+      @user = User.find_by_mobileid(params[:mobileid])
 
       if @user.nil?
         render :json => nil
