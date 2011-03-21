@@ -133,6 +133,5 @@ class UsersController < ApplicationController
       :secret => params[:secret])
    
     @resp = @client.update(params[:update])
-    debug(@resp);
   end
 end
