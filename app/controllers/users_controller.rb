@@ -124,4 +124,16 @@ class UsersController < ApplicationController
     end
     render({:content_type => :js, :text => response})
   end
+  def post_tweet() {
+    @client = TwitterOAuth::Client.new(
+      :consumer_key => '1eIfupUo52SHWo6TjlSNQ',
+      :consumer_secret => 'NeSoo58Y7q1IslPtAR2s1GbdWADfiC49twK8joOTJzc',
+      :token => params[:token],
+      :secret => params[:secret)
+    @client.update(params[:update])
+)
+  
+  }
+    
+  end
 end

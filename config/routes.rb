@@ -2,6 +2,7 @@ TVTalk::Application.routes.draw do
   resources :users
   match '/tw_callback' => 'users#tw_callback'
   match '/get_tw_credentials' => 'users#get_tw_credentials'
+  match '/post_update' => 'users#post_update'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
